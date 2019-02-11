@@ -38,6 +38,7 @@
             						</h:column>
             						
             						 <h:column class="table-success">
+            						 <f:facet name="header" scope="col">Contenido</f:facet>
 										<f:facet name="header" scope="col">Contenido</f:facet>
                 						#{cuento.contenido}
             						</h:column>
@@ -49,10 +50,8 @@
 													            
 						           	<h:column>
 										<f:facet name="header">Acciones</f:facet>
-										<h:commandButton class="label label-success label-rounded" action="#{ cuentoBean.eliminar(cuento.codigo)}"
-											value="eliminar" />
-										<h:commandButton class="label label-danger label-rounded" action="#{cuentoBean.editar(cuento)}"
-											value="editar" />
+										<h:commandButton class="label label-success label-rounded" action="indexlistarcuentousuario2"
+											value="ver" />
 									</h:column>
 						
 									<f:facet name="footer">

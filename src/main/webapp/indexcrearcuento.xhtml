@@ -103,16 +103,7 @@
 						
 						<h:dataTable var="pregunta" value="#{cuentoBean.newcuento.preguntas}" styleClass="simpletablestyle">
                         
-            <h:column>
-                <f:facet name="header">Descripcion</f:facet>
-                <h:inputText value="#{pregunta.descripcion}" id="txtdescripcion"/>
-            </h:column>
             
-            <f:facet name="footer">
-            	<h:commandButton action="#{cuentoBean.addPreguntas()}" value="Agregar Pregunta" >
-            		<f:ajax render="@form" execute="@form"/>
-            	</h:commandButton>
-            </f:facet>
      </h:dataTable>
 						
 					</div>
