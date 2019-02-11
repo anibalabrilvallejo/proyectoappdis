@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="tlistarcuento.xhtml">
+      
+      <ui:define name="contenido">
+    	
+    	<h:form>
+
+		<div class="container-fluid">
+     	
+                <div class="row">
+                    
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Listado de Cuentos</h4>
+                            </div>
+                            <div class="table-responsive">
+                            
+                            <h:outputText value="No hay registros"
+							rendered="#{empty cuentoBean.cuentos}" />
+							 
+                                <h:dataTable  class="table" value="#{cuentoBean.cuentos}" var="cuento" border="2"
+									cellspacing="1" rendered="#{not empty cuentoBean.cuentos}"
+									styleClass="simpletablestyle">
+									
+									<h:column  class="table-primary" >
+										<f:facet   name="header">Codigo</f:facet>
+                						#{cuento.codigo}
+            						</h:column>
+                                    
+                                    <h:column class="table-success">
+										<f:facet name="header" scope="col">Titulo</f:facet>
+                						#{cuento.titulo}
+            						</h:column>
+            						
+            						<h:column  class="table-primary" >
+										<f:facet   name="header">Autor</f:facet>
+                						#{cuento.autor}
+            						</h:column>
+            
+            						<h:column class="table-danger">
+										<f:facet scope="col" name="header">Contenido</f:facet>
+                						#{cuento.contenido}
+						            </h:column>
+            
+						            <h:column class="table-active">
+										<f:facet name="header">Fecha</f:facet>
+						                #{cuento.fecha}
+						            </h:column>
+													            
+						           	<h:column>
+										<f:facet name="header">Acciones</f:facet>
+										<h:commandButton class="label label-success label-rounded" action="#{ cuentoBean.eliminar(cuento.codigo)}"
+											value="eliminar" />
+										<h:commandButton class="label label-danger label-rounded" action="#{cuentoBean.editar(cuento)}"
+											value="editar" />
+									</h:column>
+						
+									<f:facet name="footer">
+						
+									</f:facet>
+								</h:dataTable>
+						
+								<h:commandButton class="label label-purple label-rounded" action="indexcrearcuento?faces-redirect=true" value="regresar" />	
+                                 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</h:form>
+    	
+    </ui:define>
+	
+</ui:composition>

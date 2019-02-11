@@ -1,0 +1,167 @@
+<ui:composition lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:hs="http://xmlns.jcp.org/jsf/html"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui"
+    template="tcrearpersonalogin.xhtml">
+    
+    <h:head>
+		<f:metadata>
+			<f:viewParam id="id" name="id" value="#{personaBean.ideditar}" />
+			<f:viewAction action="#{personaBean.loadData()}" />
+		</f:metadata>
+	</h:head>
+
+	<ui:define name="contenido">
+	
+			<h:form role="form" id="formregistro" class="form-horizontal form-material" action="#" method="post">
+			
+	<div class="page-wrapper form-body">
+       
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-5 align-self-center">
+                        <h4 class="page-title">Perfil Personal</h4>
+                    </div>
+                   
+                </div>
+            </div>
+       
+            <div class="container-fluid">
+       
+                <div class="row">
+                    
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                              
+                                    <div class="form-group has-success has-feedback">
+                                        <h:outputLabel class="font-weight-bold control-label" value="Cedula"/>
+                                        <div class="col-md-12">
+                                            <h:inputText value="#{personaBean.newpersona.cedula}" aria-describedby="inputSuccess2Status" id="txtcedula" type="text" pt:placeholder="Cedula" class="form-control form-control-line">
+                                            	
+											</h:inputText>
+											 <h:message for="txtcedula" errorStyle="color:red; display:block"/>
+											<h:outputText class="help-block" id="muestraValor" value="#{personaBean.coincidencia}" errorStyle="color:red; display:block"/>
+											
+											<span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span> 
+											<span id="inputSuccess2Status" class="sr-only">(success)</span>                                             
+                                        </div>
+                                    </div>
+                                                                     
+                                    <div class="form-group">
+                                        <h:outputLabel class="font-weight-bold" value="Nombres" />
+                                        <div class="col-md-12">
+                                            <h:inputText value="#{personaBean.newpersona.nombres}" id="txtnombres" type="text" pt:placeholder="Nombres" class="form-control form-control-line"/>
+                                            <h:message for="txtnombres" errorStyle="color:red; display:block"/>
+                                        </div>
+                                    </div>
+                                    
+                        			<div class="form-group">
+                                      <h:outputLabel class="font-weight-bold" value="Apellidos"/>
+                                        <div class="col-md-12">
+                                            <h:inputText value="#{personaBean.newpersona.apellidos}" id="txtapellidos" type="text" pt:placeholder="Apellidos" class="form-control form-control-line"/>
+                                            <h:message for="txtapellidos" errorStyle="color:red; display:block"/>
+                                        </div>
+                                    </div>
+                                                                        
+                                    <div class="form-group">
+                                      <h:outputLabel class="font-weight-bold" value="Correo"/>
+                                        <div class="col-md-12">
+                                            <h:inputText value="#{personaBean.newpersona.correo}" id="txtcorreo"  type="email" pt:placeholder="usuario@gmail.com" class="form-control form-control-line">
+                                            	<f:validateRegex pattern=".+@.+\.[a-z]+"/>
+                                            </h:inputText>
+                                            <h:message for="txtcorreo" errorStyle="color:red; display:block"/>
+                                        </div>
+                                    </div>
+                                                                        
+                                    <div class="form-group">
+                                      <h:outputLabel class="font-weight-bold" value="Contraseña" />
+                                        <div class="col-md-12">
+                                            <h:inputSecret value="#{personaBean.newpersona.contraseña}" id="txtcontraseña" type="password" pt:placeholder="******" class="form-control form-control-line"/>
+                                            <h:message for="contrasenia" errorStyle="color:red; display:block" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                      <h:outputLabel class="font-weight-bold" value="Nuevamente su contraseña: " for="rcontrasenia" />
+                                        <div class="col-md-12">
+                                            <h:inputSecret name="rcontraseña" value="#{personaBean.contrasenia}" id="rcontraseña" type="password" pt:placeholder="******" class="form-control form-control-line"/>
+                                            <h:message for="rcontrasenia" errorStyle="color:red; display:block" />
+                                        </div>
+                                    </div>
+    			
+                                    <div class="form-group">
+                                      <h:outputLabel class="font-weight-bold" value="Direccion" />
+                                        <div class="col-md-12">
+                                            <h:inputText  value="#{personaBean.newpersona.direccion}" id="txtdireccion"
+                                            type="text" pt:placeholder="Direccion" class="form-control form-control-line"/>
+                                            <h:message for="txtdireccion" errorStyle="color:red; display:block"/>
+                                        </div>
+                                    </div>
+                             
+									<div class="sign-u">
+										<div class="sign-up1">
+											<h6><h:outputLabel class="font-weight-bold" value="Sexo" /></h6>
+										</div>
+										<div class="sign-up2">
+									
+											<h:selectOneRadio value="#{personaBean.sexo}">
+												<f:selectItem itemLabel="Masculino" itemValue="Masculino" action="#{personaBean.sexo()}" />
+ 												<f:selectItem itemLabel="Femenino" itemValue="Femenino" action="#{personaBean.sexo()}"/>	
+											</h:selectOneRadio>
+													         	 																				
+										</div>
+										<div class="clearfix"></div>
+									</div>
+
+									<div class="form-group">
+                                      <h:outputLabel class="font-weight-bold" value="Telefono" />
+                                        <div class="col-md-12">
+                                            <h:inputText  value="#{personaBean.newpersona.telefono}" id="txttelefono"
+                                            type="text" pt:placeholder="Telefono" class="form-control form-control-line"/>
+                                            <h:message for="txttelefono" errorStyle="color:red; display:block"/>
+                                        </div>
+                                    </div>     
+                                  	
+                                  	 <div class="form-group">
+                                      <h:outputLabel class="font-weight-bold" value="Fecha"/>
+                                        <div class="col-md-12">
+                                            <h:panelGrid columns="2" cellpadding="5">
+	                                            <p:inputText  value="#{personaBean.newpersona.fecha}" id="txtfecha"
+	                                            type="text" pt:placeholder="dd/mm/aaaa" class="form-control form-control-line" mode="popup"/>
+	                           
+	                                            <h:message for="txtfecha" errorStyle="color:red; display:block"/>
+											</h:panelGrid>                                            
+                                        </div>
+                                    </div>                                                                           
+                              		                           			
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                        
+                                        	<h:inputHidden value="#{personaBean.bandera}" />
+                                         	<h:commandButton action="#{personaBean.guardar()}" value="Guardar" update="growl" 
+                                         		style="margin-right:20px;" styleClass="ui-priority-primary" class="btn btn-success btn btn-primary  py-2 px-4 rounded-0">
+											</h:commandButton>
+											<br> </br>
+																															
+                                        </div>
+                                    </div>            
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+              
+            </div>
+                   
+        </div>   
+	
+				<h:messages globalOnly="true" />
+				
+			</h:form>
+	</ui:define>
+</ui:composition>

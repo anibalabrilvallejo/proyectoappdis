@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:hs="http://xmlns.jcp.org/jsf/html"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+  <h:head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <title>Grayscale - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="templates/grayscale/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom fonts for this template -->
+    <link href="templates/grayscale/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="templates/grayscale/css/grayscale.min.css" rel="stylesheet"/>
+
+  </h:head>
+  
+  <style>
+		#upload-panel{
+			border-radius: 5px;
+			border: 1px solid #DDD;
+			position: relative;
+			width: 400px;
+			height: 200px;
+			color: #352894de;
+			font-size:26px;
+			font-familt: "Tahoma";
+			text-align: center;
+			margin: 0 auto; 
+			    
+			
+		}
+		#upload-panel input[type='file']{
+			position: absolut;
+			top: 0px;
+			left: 0px;
+			opacity: 0;
+			height: 100px;
+			width: 100%;
+			
+		}
+		
+		#upload-progres{
+			margin: 50px auto;
+			width: 600px;
+		}
+		#upload-progress .progress{
+			border: 1px solid #DDD;
+			border-radius: 3px;
+			margin: 5px;
+			padding: 5px;
+			font-familt: "Tahoma";
+			color: #352894de;
+			background-color: #DDD;
+			
+		}
+	</style>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">ANIBAL ABRIL</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">BYRON CALLE</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i>Log in</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+	<!-- *** LOGIN MODAL ***_________________________________________________________
+    -->
+    <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="Login" class="modal-title">Ingrese credenciales</h4>
+            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+          </div>
+          <div class="modal-body">
+            <h:form >
+        		
+        		<div class="form-group">
+                USUARIO:<h:inputText id="usuario" type="text" placeholder="email" class="form-control" value="#{personaBean.newpersona.correo}"/>
+              </div>
+              
+              <div class="form-group">
+                 CONTRASEÑA:<h:inputText id="contraseña" type="password" placeholder="password" class="form-control" value="#{personaBean.newpersona.contraseña}"/>
+              </div>
+              <h:outputText value="#{personaBean.loginexiste}" id="mensaje" style="color:red; display:block" />
+              <p class="text-center">
+                <h:commandButton type="button" class="btn btn-primary" value="LOGIN" action="#{personaBean.iniciarSesion()}">
+                	<f:ajax render="mensaje usuario contraseña" execute="usuario contraseña"/>
+                </h:commandButton>
+              </p>
+		
+            </h:form>
+            <p class="text-center text-muted">No estas Registrado?</p>
+            <p class="text-center text-muted"><a href="indexcrearpersonalogin.xhtml"><strong>Registrate Ahora</strong></a></p>
+                      
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- *** LOGIN MODAL END ***-->
+    
+    <!-- Header -->
+    <header class="masthead">
+      <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center">
+          <h1 class="mx-auto my-0 text-uppercase"><ui:insert name="titulo">APPDIS</ui:insert></h1>
+          <h2 class="text-white-50 mx-auto mt-2 mb-5">UNIVERSIDAD POLITECNICA SALESIANA</h2>
+          <a href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary js-scroll-trigger">Iniciar</a>
+        </div>
+      </div>
+    </header>
+   
+    <!-- Bootstrap core JavaScript -->
+    <script src="templates/grayscale/vendor/jquery/jquery.min.js"></script>
+    <script src="templates/grayscale/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="templates/grayscale/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="templates/grayscale/js/grayscale.min.js"></script>
+
+  </body>
+
+</html>

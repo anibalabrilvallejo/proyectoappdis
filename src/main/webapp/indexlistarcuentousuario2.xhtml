@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      template="tlistarcuentousuario.xhtml">
+      
+      <ui:define name="contenido">
+    	
+    	<h:form>
+
+		<div class="container-fluid">
+     	
+                <div class="row">
+                    
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Cuento</h4>
+                            </div>
+                            <div class="table-responsive">
+                                      						
+            					<h:outputText value="No hay registros"
+							rendered="#{empty cuentoBean.cuentos}" />
+							 
+                                <h:dataTable  class="table" value="#{cuentoBean.cuentos}" var="cuento" border="2"
+									cellspacing="1" rendered="#{not empty cuentoBean.cuentos}"
+									styleClass="simpletablestyle">
+									            						
+            						 <h:column class="table-success">
+										<f:facet name="header" scope="col">Contenido</f:facet>
+                						#{cuento.contenido}
+            						</h:column>
+                      						
+									<f:facet name="footer">
+						
+									</f:facet>
+								</h:dataTable>
+						
+								<h:commandButton class="label label-purple label-rounded" action="indexlistarcuentousuario?faces-redirect=true" value="regresar" />							
+						
+							     
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</h:form>
+    	
+    </ui:define>
+	
+</ui:composition>

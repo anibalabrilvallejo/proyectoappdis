@@ -1,0 +1,133 @@
+<ui:composition lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:hs="http://xmlns.jcp.org/jsf/html"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    xmlns:p="http://primefaces.org/ui"
+    template="tcrearcuentousuario.xhtml">
+    
+    <h:head>
+		<f:metadata>
+        <f:viewParam id="id" name="id" value="#{cuentoBean.id}"/>
+        <f:viewAction action="#{cuentoBean.loadData()}" />
+ 	</f:metadata>
+	</h:head>
+	
+    <ui:define name="contenido">
+
+		<h:form role="form" id="formregistro" class="form-horizontal form-material" action="#" method="post">
+
+			<div class="page-wrapper form-body">
+				<div class="page-breadcrumb">
+					<div class="row">
+						<div class="col-5 align-self-center">
+							<h4 class="page-title">CUENTOS</h4>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-8 col-xlg-9 col-md-7">
+							<div class="card">
+								<div class="card-body">
+								
+									<div class="form-group has-success has-feedback">
+									
+										<h:outputLabel class="font-weight-bold control-label" value="Titulo" />
+										<div class="col-md-12">
+											<h:inputText value="#{cuentoBean.newcuento.titulo}" aria-describedby="inputSuccess2Status" 
+												id="txttitulo" type="text" pt:placeholder="Titulo" class="form-control form-control-line">
+											</h:inputText>
+											<h:message for="txttitulo" errorStyle="color:red; display:block" />
+											<h:outputText class="help-block" errorStyle="color:red; display:block" />
+											<span class="glyphicon glyphicon-ok form-control-feedback"
+												aria-hidden="true"></span> <span id="inputSuccess2Status"
+												class="sr-only">(success)</span>
+										</div>
+									</div>
+									
+									<div class="form-group">
+										<h:outputLabel class="font-weight-bold" value="Autor" />
+										<div class="col-md-12">
+											<p:inputText value="#{cuentoBean.newcuento.autor}"
+												id="txtautor" type="text" pt:placeholder="Autor"
+												class="form-control form-control-line" rows="6" cols="33"/>
+											<h:message for="txtautor" errorStyle="color:red; display:block" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<h:outputLabel class="font-weight-bold" value="Contenido" />
+										<div class="col-md-12">
+											<p:inputTextarea value="#{cuentoBean.newcuento.contenido}"
+												id="txtcontenido" type="text" pt:placeholder="max 255 caracteres"
+												class="form-control form-control-line" rows="6" cols="33"/>
+											<h:message for="txtcontenido" errorStyle="color:red; display:block" />
+										</div>
+									</div>
+
+									<div class="form-group">
+										<h:outputLabel class="font-weight-bold" value="Fecha" />
+										<div class="col-md-12">
+											<h:panelGrid columns="2" cellpadding="5">
+												<p:inputText value="#{cuentoBean.newcuento.fecha}"
+													id="txtfecha" type="text" pt:placeholder="dd/mm/aaaa"
+													class="form-control form-control-line" mode="popup" />
+
+												<h:message for="txtfecha"
+													errorStyle="color:red; display:block" />
+											</h:panelGrid>
+										</div>
+									</div>
+									     							
+
+									<div class="form-group">
+										<div class="col-sm-12">
+
+											<h:inputHidden value="#{cuentoBean.bandera}" />
+											<h:commandButton action="#{cuentoBean.guardar()}" value="Guardar" update="growl" 
+											style="margin-right:20px;" styleClass="ui-priority-primary"
+												class="btn btn-success btn btn-primary  py-2 px-4 rounded-0">
+											</h:commandButton>
+											<br> </br>
+
+											<h:commandButton
+												action="indexlistarcuentousuario?faces-redirect=true"
+												value="Listar" immediate="true"
+												class="btn btn-success btn btn-primary  py-2 px-4 rounded-0">
+											</h:commandButton>
+										</div>
+									</div>
+
+								</div>    
+     
+							</div>
+						</div>
+						
+						<h:dataTable var="pregunta" value="#{cuentoBean.newcuento.preguntas}" styleClass="simpletablestyle">
+                        
+            <h:column>
+                <f:facet name="header">Descripcion</f:facet>
+                <h:inputText value="#{pregunta.descripcion}" id="txtdescripcion"/>
+            </h:column>
+            
+            <f:facet name="footer">
+            	<h:commandButton action="#{cuentoBean.addPreguntas()}" value="Agregar Pregunta" >
+            		<f:ajax render="@form" execute="@form"/>
+            	</h:commandButton>
+            </f:facet>
+     </h:dataTable>
+						
+					</div>
+
+				</div>
+			</div>
+
+			<h:messages globalOnly="true" />
+
+		</h:form>
+		
+	</ui:define>	    
+</ui:composition>

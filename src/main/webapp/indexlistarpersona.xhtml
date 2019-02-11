@@ -1,0 +1,117 @@
+<ui:composition lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:hs="http://xmlns.jcp.org/jsf/html"
+    xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+    template="tlistarpersona.xhtml">
+    
+<h:head>
+	<link type="text/css" rel="stylesheet"
+		href="/JavaServerFaces/faces/javax.faces.resource/table-style.css?ln=css" />
+	<h:outputStylesheet library="css" name="table-style.css" />
+</h:head>
+
+    <ui:define name="contenido">
+    	
+    	<h:form>
+
+		<div class="container-fluid">
+     	
+                <div class="row">
+                    
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Listado de Personas</h4>
+                            </div>
+                            <div class="table-responsive">
+                            
+                            <h:outputText value="No hay registros"
+							rendered="#{empty personaBean.personas}" />
+							 
+                                <h:dataTable  class="table" value="#{personaBean.personas}" var="persona" border="2"
+									cellspacing="1" rendered="#{not empty personaBean.personas}"
+									styleClass="simpletablestyle">
+									
+									<h:column  class="table-primary" >
+										<f:facet   name="header">Cedula</f:facet>
+                						#{persona.cedula}
+            						</h:column>
+                                    
+                                    <h:column class="table-success">
+										<f:facet name="header" scope="col">Nombres</f:facet>
+                						#{persona.nombres}
+            						</h:column>
+            
+            						<h:column class="table-danger">
+										<f:facet scope="col" name="header">Apellidos</f:facet>
+                						#{persona.apellidos}
+						            </h:column>
+            
+						            <h:column class="table-active">
+										<f:facet name="header">Correo</f:facet>
+						                #{persona.correo}
+						            </h:column>
+									
+									  <h:column class="table-info">
+										<f:facet name="header">Contraseña</f:facet>
+						                #{persona.contraseña}
+						            </h:column>
+						        	
+						        	<h:column class="table-active">
+										<f:facet name="header">Estado</f:facet>
+						                #{persona.estado}
+						            </h:column>
+						            
+						           	<h:column class="table-primary">
+										<f:facet name="header">Perfil</f:facet>
+						                #{persona.perfil}
+						            </h:column>
+						        	    
+									<h:column class="table-info">
+										<f:facet name="header">Direccion</f:facet>
+						                #{persona.direccion}
+						            </h:column>
+						
+									<h:column class="table-danger">
+										<f:facet name="header">Sexo</f:facet>
+						                #{persona.sexo}
+						            </h:column>
+						
+									<h:column class="table-active">
+										<f:facet name="header">Telefono</f:facet>
+						                #{persona.telefono}
+						            </h:column>
+						
+									<h:column class="table-primary">
+										<f:facet name="header">Fecha</f:facet>
+						                #{persona.fecha}
+						            </h:column>
+						
+									<h:column>
+										<f:facet name="header">Acciones</f:facet>
+										<h:commandButton class="label label-success label-rounded" action="#{personaBean.eliminar(persona.cedula)}"
+											value="eliminar" />
+										<h:commandButton class="label label-danger label-rounded" action="#{personaBean.editar(persona)}"
+											value="editar" />
+						
+									</h:column>
+						
+									<f:facet name="footer">
+						
+									</f:facet>
+								</h:dataTable>
+						
+								<h:commandButton class="label label-purple label-rounded" action="indexcrearpersona?faces-redirect=true" value="regresar" />	
+                                 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</h:form>
+    	
+    </ui:define>
+</ui:composition>
